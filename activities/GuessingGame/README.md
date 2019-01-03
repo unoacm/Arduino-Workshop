@@ -4,4 +4,5 @@ This activity uses 8 lights to display a number from 1-255 in binary, that the u
 ## This activity requires:
 * Diodes
 
-Note: Schematics for this activity will be added soon.
+## Layout
+![Layout](https://github.com/unoacm/Arduino-Workshop/blob/master/activities/GuessingGame/GuessingGame.png)

@@ -51,10 +51,10 @@ void turnAllOff(acm::Diode d[], size_t s) {
 void displayNum(char num, acm::Diode d[], size_t s) {
   for(size_t i = 0; i < s; i++) {
     if(bitRead(num, i)) {
-      d[s - i - 1].turnon();
+      d[i].turnon();
     }
     else {
-      d[s - i - 1].turnoff();
+      d[i].turnoff();
     }
   }
 }
