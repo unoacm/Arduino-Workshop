@@ -4,5 +4,5 @@ This activity can turn on a set of 8 lights to represent a character given by th
 ## This activity requires:
 * Diodes
 
-
-Note: Schematics for this activity will be added soon.
+## Layout
+![Layout](https://github.com/unoacm/Arduino-Workshop/blob/master/activities/ByteLights/ByteLights.png)
