@@ -2,9 +2,9 @@
 #include <Led.h>
 
 acm::Led l(9, 10, 11);
-acm::Pot redPot(2);
+acm::Pot redPot(0);
 acm::Pot greenPot(1);
-acm::Pot bluePot(0);
+acm::Pot bluePot(2);
 
 void setup() {
   // put your setup code here, to run once:

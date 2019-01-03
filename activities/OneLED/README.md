@@ -5,4 +5,5 @@ This activity uses three potentiometers to change the red, green, and blue compo
 * LEDs
 * Potentiometers
 
-Note: Schematics for this activity will be added soon.
+## Layout
+![Layout](https://github.com/unoacm/Arduino-Workshop/blob/master/activities/OneLED/OneLED.png)
