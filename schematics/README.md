@@ -5,7 +5,7 @@ Schematics can be anything from a diagram, to a picture, to a video. It has to c
 Based on the sample Arduino UNO picture, we can add onto it to emphasize parts:
 
 ## Original
-![alt text](https://github.com/unoacm/Arduino-Workshop/blob/master/schematics/pictures/arduino-uno.jpg "Original Photo")
+![Original Photo](https://github.com/unoacm/Arduino-Workshop/blob/master/schematics/pictures/arduino-uno.jpg)
 
 ## Sample Schematic 1
-![alt text](https://github.com/unoacm/Arduino-Workshop/blob/master/schematics/pictures/arduino-uno-sample-schematic.jpg "Sample 1")
+![Sample 1](https://github.com/unoacm/Arduino-Workshop/blob/master/schematics/pictures/arduino-uno-sample-schematic.jpg)

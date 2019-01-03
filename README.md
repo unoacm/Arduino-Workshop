@@ -11,7 +11,7 @@ Library code consists of non-ino extension code that is specifically used for ut
 
 Several libraries should already be included in this repo as soon as they can be. Please look over how the folder is constructed to see how they work.
 
-I recommend that all code be under the namespace `acm`, to avoid conflicts and keep it simple.
+I recommend that all code be under the namespace `acm`, to avoid conflicts and keeping it simple.
 
 # Activities
 Activties can include a multitude of different schematics, library code, and even Arudino .ino files. These activities can be as simple as lighting up a diode, to playing a guessing game. To easily create these activities, they can contain their own schematics and library code folders, where the schematics are taken from the main pool, and the library code folder names are marked down to show what dependencies they will use. This consistency will help make activities for readable for everyone. Hopefully, examples will be put up to show how this could work.
