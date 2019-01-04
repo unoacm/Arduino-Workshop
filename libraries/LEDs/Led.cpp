@@ -70,18 +70,21 @@ namespace acm
 	void Led::setRedPin(int pin)
 	{
 		RPin = pin;
+		pinMode(pin, OUTPUT);
 		changeColor();
 	}
 
 	void Led::setGreenPin(int pin)
 	{
 		GPin = pin;
+		pinMode(pin, OUTPUT);
 		changeColor();
 	}
 
 	void Led::setBluePin(int pin)
 	{
 		BPin = pin;
+		pinMode(pin, OUTPUT);
 		changeColor();
 	}
 
