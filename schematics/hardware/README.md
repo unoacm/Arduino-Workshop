@@ -47,6 +47,6 @@ Note: This device is very sensitive, so bumping it around can lead to spikes or 
 ## Servo
 ![Servo](https://github.com/unoacm/Arduino-Workshop/blob/master/schematics/hardware/Servo.jpg)
 
-The servos we have allow for the top fin to spin around 180 degrees. It is recommended to use 5V, since servo take a lot of power. You must also use a 100 ohm resister for the V line.
+The servos we have allow for the top fin to spin around 180 degrees. It is recommended to use 5V, since servo take a lot of power. Servos do not need a resistor.
 
 Servos can be a bit funky and will pick up random noise from the data line/V line and move slightly.
