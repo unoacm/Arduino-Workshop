@@ -23,7 +23,7 @@ namespace acm
 	{
 		if(attached())
 		{
-			detach();
+			s.detach();
 		}
 	}
 
