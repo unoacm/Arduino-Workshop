@@ -6,17 +6,17 @@
 
 We only own these 100 ohm resistors. They will work fine with all of the hardware we currently have.
 
-## Red LED
-![Red LED](https://github.com/unoacm/Arduino-Workshop/blob/master/schematics/hardware/Red-LED.png)
+## Red Diode
+![Red Diode](https://github.com/unoacm/Arduino-Workshop/blob/master/schematics/hardware/Red-Diode.png)
 
-When it comes to single-color LEDs, we only have red LEDs. Each LED has two tails. The longer tail is the voltage line, and the shorter tail is the ground line.
+When it comes to single-color lights, we only have red diodes. Each diode has two tails. The longer tail is the voltage line, and the shorter tail is the ground line.
 
-For proper use, a 100 ohm resistor should be used to bridge between the LED's voltage line and the power coming from the Arduino.
+For proper use, a 100 ohm resistor should be used to bridge between the diode's voltage line and the power coming from the Arduino.
 
-These LEDs are either on or off. Power can be supplied through any of the digital pins (2-13) to control on/off, or to a voltage line for always on.
+These diodes are either on or off. Power can be supplied through any of the digital pins (2-13) to control on/off, or to a voltage line for always on.
 
-## Colored LED
-![Color LED](https://github.com/unoacm/Arduino-Workshop/blob/master/schematics/hardware/Color-LED.jpg)
+## RGB LED
+![RGB LED](https://github.com/unoacm/Arduino-Workshop/blob/master/schematics/hardware/RGB-LED.jpg)
 
 This LED allows for a wide range of colors in the RGB space. RGB values go 0-255. A 100 ohm resister should be used for the red, green, and blue data lines.
 
