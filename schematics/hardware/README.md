@@ -16,7 +16,7 @@ For proper use, a 100 ohm resistor should be used to bridge between the diode's 
 These diodes are either on or off. Power can be supplied through any of the digital pins (2-13) to control on/off, or to a voltage line for always on.
 
 ## RGB LED
-![RGB LED](https://github.com/unoacm/Arduino-Workshop/blob/master/schematics/hardware/RGB-LED.jpg)
+![RGB LED](https://github.com/unoacm/Arduino-Workshop/blob/master/schematics/hardware/RGB-LED.png)
 
 This LED allows for a wide range of colors in the RGB space. RGB values go 0-255. A 100 ohm resister should be used for the red, green, and blue data lines.
 
