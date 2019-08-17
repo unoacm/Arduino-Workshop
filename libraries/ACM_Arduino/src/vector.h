@@ -384,8 +384,14 @@ namespace uno_acm
 			template<class... Args>
 			iterator emplace(const_iterator position, Args&&... args)
 			{
+				if(elements + 1 >= _capacity)
+				{
+					reserve((elements + 1) * vector::growth_factor);
+				}
+				
 				move_backward(position, this->end(), this->end() + 1);
 				*position = move(T(args...));
+				elements++;
 				return position;
 			}
 

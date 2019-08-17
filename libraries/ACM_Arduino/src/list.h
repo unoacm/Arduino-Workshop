@@ -512,7 +512,7 @@ namespace uno_acm
 	template<class T, size_t N>
 	T* end(T(&arr)[N])
 	{
-		return &arr[N-1];
+		return &arr[N];
 	}
 
 	template<class Container>
