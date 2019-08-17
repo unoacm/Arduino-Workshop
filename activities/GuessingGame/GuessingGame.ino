@@ -1,29 +1,33 @@
 #include <Diode.h>
+#include <array.h>
 
-void right(acm::Diode[], size_t);
-void wrong(acm::Diode[], size_t);
-void turnAllOff(acm::Diode[], size_t);
-void displayNum(char, acm::Diode[], size_t);
+using namespace uno_acm;
 
-acm::Diode diodes[8];
+void right();
+void wrong();
+void turnAllOff();
+void turnAllOn();
+void displayNum(char);
+
+array<Diode, 8> diodes;
 
 void setup() {
   Serial.begin(9600);
   randomSeed(analogRead(1));
-  for(int i = 0, j = 2; i < 8; i++, j++)
+  for(int i = 0, j = 2; i < diodes.size(); i++, j++)
   {
     diodes[i].setPin(j);
   }
 }
 
 void loop() {
-  turnAllOff(diodes, 8);
+  turnAllOff();
   delay(1000);
   long hiddenNum = random(1, 256);
   long input;
   do
   {
-    displayNum(hiddenNum, diodes, 8);
+    displayNum(hiddenNum);
     Serial.print("\nPlease enter a number from 1 to 255: ");
     while(!Serial.available());
     do
@@ -32,51 +36,53 @@ void loop() {
     } while(input < 1 || input > 255);
     if(input != hiddenNum) {
       Serial.println("\nGuess again!");
-      turnAllOff(diodes, 8);
-      wrong(diodes, 8);
+      turnAllOff();
+      wrong();
       delay(500);
     }
   } while(input != hiddenNum);
   Serial.println("\nYou got it!");
-  turnAllOff(diodes, 8);
-  right(diodes, 8);
+  turnAllOff();
+  right();
 }
 
-void turnAllOff(acm::Diode d[], size_t s) {
-  for(size_t i = 0; i < s; i++) {
-    d[i].turnoff();
+void turnAllOff() {
+  for(auto& diode : diodes) {
+    diode.turnoff();
   }
 }
 
-void displayNum(char num, acm::Diode d[], size_t s) {
-  for(size_t i = 0; i < s; i++) {
+void turnAllOn() {
+  for(auto& diode : diodes) {
+    diode.turnon();
+  }
+}
+
+void displayNum(char num) {
+  for(size_t i = 0; i < diodes.size(); i++) {
     if(bitRead(num, i)) {
-      d[i].turnon();
+      diodes[i].turnon();
     }
     else {
-      d[i].turnoff();
+      diodes[i].turnoff();
     }
   }
 }
 
-void right(acm::Diode d[], size_t s) {
-  for(size_t i = 0; i < 12; i++) {
-    long randomDiode = random(s);
-    d[randomDiode].turnon();
+void right() {
+  for(int i = 0; i < 12; i++) {
+    long randomDiode = random(diodes.size());
+    diodes[randomDiode].turnon();
     delay(200);
-    d[randomDiode].turnoff();
+    diodes[randomDiode].turnoff();
   }
 }
 
-void wrong(acm::Diode d[], size_t s) {
+void wrong() {
   for(size_t i = 0; i < 3; i++) {
     delay(200);
-    for(size_t j = 0; j < s; j++) {
-      d[j].turnon();
-    }
+    turnAllOn();
     delay(200);
-    for(size_t j = 0; j < s; j++) {
-      d[j].turnoff();
-    }
+    turnAllOff();
   }
 }

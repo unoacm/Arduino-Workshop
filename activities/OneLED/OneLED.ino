@@ -1,10 +1,12 @@
 #include <Potentiometer.h>
 #include <Led.h>
 
-acm::Led l(9, 10, 11);
-acm::Pot redPot(0);
-acm::Pot greenPot(1);
-acm::Pot bluePot(2);
+using namespace uno_acm;
+
+Led l(9, 10, 11);
+Pot redPot(0);
+Pot greenPot(1);
+Pot bluePot(2);
 
 void setup() {
   // put your setup code here, to run once:
@@ -13,9 +15,9 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  int red = acm::Led::potConversion(redPot);
-  int green = acm::Led::potConversion(greenPot);
-  int blue = acm::Led::potConversion(bluePot);
+  int red = Led::potConversion(redPot);
+  int green = Led::potConversion(greenPot);
+  int blue = Led::potConversion(bluePot);
   Serial.print("Red: ");
   Serial.print(red);
   Serial.print(" Green: ");

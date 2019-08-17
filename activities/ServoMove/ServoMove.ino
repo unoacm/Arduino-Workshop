@@ -1,8 +1,10 @@
 #include <acmservo.h>
 #include <Potentiometer.h>
 
-acm::ACMServo myservo;
-acm::Pot p(0);
+using namespace uno_acm;
+
+ACMServo myservo;
+Pot p(0);
 
 void setup() {
   // put your setup code here, to run once:

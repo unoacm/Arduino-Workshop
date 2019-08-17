@@ -4,11 +4,13 @@
 #define FASTEST_MS 250
 #define SLOWEST_MS 1000
 
-acm::Pot p(0);
-acm::Led led(11, 10, 9);
+using namespace uno_acm;
 
-int getDelayTime(acm::Pot pot) {
-  return map(pot.getValue(), acm::Pot::MINIMUM_VALUE, acm::Pot::MAXIMUM_VALUE, FASTEST_MS, SLOWEST_MS);
+Pot p(0);
+Led led(11, 10, 9);
+
+int getDelayTime(const Pot& pot) {
+  return map(pot.getValue(), Pot::minimum_value, Pot::maximum_value, FASTEST_MS, SLOWEST_MS);
 }
 
 void setup() {
