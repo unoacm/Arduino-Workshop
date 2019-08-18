@@ -216,6 +216,9 @@ namespace uno_acm
 		using type = T;
 	};
 
+	#ifndef __CONTAINERS_BEGIN_END__
+	#define __CONTAINERS_BEGIN_END__
+
 	template<class Container>
 	auto begin(Container& cont) -> decltype(cont.begin())
 	{
@@ -251,6 +254,8 @@ namespace uno_acm
 	{
 		return &arr[N];
 	}
+
+	#endif
 }
 
 #endif

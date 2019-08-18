@@ -80,7 +80,7 @@ namespace uno_acm
 		return init;
 	}
 
-	template<class InputIterator1, class InputIterator2, class T, classs BinaryOperation1, class BinaryOperation2>
+	template<class InputIterator1, class InputIterator2, class T, class BinaryOperation1, class BinaryOperation2>
 	T inner_product(InputIterator1 first1, InputIterator1 last1, InputIterator2 first2, T init, BinaryOperation1 binary_op1, BinaryOperation2 binary_op2)
 	{
 		while(first1 != last1)

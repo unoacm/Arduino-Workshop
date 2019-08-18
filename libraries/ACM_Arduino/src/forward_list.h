@@ -482,6 +482,20 @@ namespace uno_acm
 			forward_list_node<T>* current = nullptr;
 	};
 
+	#ifndef __CONTAINERS_BEGIN_END__
+	#define __CONTAINERS_BEGIN_END__
+
+	template<class Container>
+	auto begin(Container& cont) -> decltype(cont.begin())
+	{
+		return cont.begin();
+	}
+
+	template<class Container>
+	auto begin(const Container& cont) -> decltype(cont.begin())
+	{
+		return cont.begin();
+	}
 
 	template<class Container>
 	auto end(Container& cont) -> decltype(cont.end())
@@ -500,6 +514,8 @@ namespace uno_acm
 	{
 		return &arr[N];
 	}
+
+	#endif
 }
 
 #endif

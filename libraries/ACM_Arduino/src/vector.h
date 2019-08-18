@@ -27,7 +27,7 @@ namespace uno_acm
 			static constexpr int growth_factor = 1.5;
 
 			explicit vector()
-				: _data(new value_type[1]), elements(0), _capacity(1)
+				: _data(new value_type[0]), elements(0), _capacity(0)
 			{
 			}
 
@@ -398,8 +398,7 @@ namespace uno_acm
 			template<class... Args>
 			iterator emplace_back(Args&&... args)
 			{
-				emplace(this->end(), args...);
-				return this->end();
+				return emplace(this->end() - 1, args...);
 			}
 
 		private:
@@ -407,6 +406,21 @@ namespace uno_acm
 			size_type elements;
 			size_type _capacity;
 	};
+
+	#ifndef __CONTAINERS_BEGIN_END__
+	#define __CONTAINERS_BEGIN_END__
+
+	template<class Container>
+	auto begin(Container& cont) -> decltype(cont.begin())
+	{
+		return cont.begin();
+	}
+
+	template<class Container>
+	auto begin(const Container& cont) -> decltype(cont.begin())
+	{
+		return cont.begin();
+	}
 
 	template<class Container>
 	auto end(Container& cont) -> decltype(cont.end())
@@ -425,6 +439,8 @@ namespace uno_acm
 	{
 		return &arr[N];
 	}
+
+	#endif
 }
 
 #endif

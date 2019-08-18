@@ -491,6 +491,9 @@ namespace uno_acm
 			list_node<T>* current = nullptr;
 	};
 
+	#ifndef __CONTAINERS_BEGIN_END__
+	#define __CONTAINERS_BEGIN_END__
+
 	template<class Container>
 	auto begin(Container& cont) -> decltype(cont.begin())
 	{
@@ -526,6 +529,8 @@ namespace uno_acm
 	{
 		return cont.end();
 	}
+
+	#endif
 }
 
 #endif

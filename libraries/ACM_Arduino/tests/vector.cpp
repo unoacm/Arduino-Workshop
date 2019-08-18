@@ -10,7 +10,7 @@ void constructors()
 
 	uno_acm::vector<int> v1;
 	dynamic_assert(v1.size() == 0, messagePrefix + "Size is not zero on default construction");
-	dynamic_assert(v1.capacity() == 1, messagePrefix + "Capacity is not one on default construction");
+	dynamic_assert(v1.capacity() == 0, messagePrefix + "Capacity is not one on default construction");
 
 	static constexpr int cap_test = 5;
 	uno_acm::vector<int> v2(cap_test);
@@ -53,7 +53,48 @@ void constructors()
 	}
 }
 
+void pushing()
+{
+	static std::string messagePrefix = "Testing Pushing: ";
+	uno_acm::vector<int> v1;
+	constexpr int push_amount = 50;
+	for(decltype(v1)::value_type i = 0; i < push_amount; i++)
+	{
+		v1.push_back(i);
+	}
+
+	dynamic_assert(v1.size() == push_amount, messagePrefix + "Size is " + std::to_string(push_amount) + " when pushing values");
+
+	for(decltype(v1)::size_type i = 0; i < push_amount; i++)
+	{
+		dynamic_assert(v1[i] == static_cast<decltype(v1)::value_type>(i), messagePrefix + "Vector at [" + std::to_string(i) + "] is not = " + std::to_string(i));
+	}
+}
+
+void emplacing()
+{
+	struct testing
+	{
+		double x, y;
+		testing(double x, double y)
+			: x(x), y(y)
+		{	
+		}
+
+		testing() {}
+	};
+
+	static std::string messagePrefix = "Testing Emplacing: ";
+	uno_acm::vector<testing> v1;
+	v1.emplace_back(1.3, 33);
+
+	dynamic_assert(v1[0].x == 1.3, messagePrefix + "testing.x is " + std::to_string(v1[0].x) + " not 1.3");
+	dynamic_assert(v1[0].y == 33.0, messagePrefix + "testing.x is " + std::to_string(v1[0].x) + " not 33.0");
+}
+
 int main()
 {
 	constructors();
+	pushing();
+	emplacing();
 }

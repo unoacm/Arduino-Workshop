@@ -1,17 +1,31 @@
-#ifndef LIGHT
-#define LIGHT
+#ifndef UNO_ACM_LIGHT
+#define UNO_ACM_LIGHT
 
-namespace acm
+#include <Arduino.h>
+
+namespace uno_acm
 {
 	class Light
 	{
 		public:
-			Light(int);
-			void setPin(int);
-			int getPin() const;
-			int getValue() const;
+			Light(int pin_num)
+			{
+				setPin(pin_num);
+			}
+			void setPin(int pin_num)
+			{
+				this->pin_num = pin_num;
+			}
+			int getPin() const
+			{
+				return pin_num;
+			}
+			int getValue() const
+			{
+				return analogRead(pin_num);
+			}
 		private:
-			int pinNum;
+			int pin_num;
 	};
 }
 
