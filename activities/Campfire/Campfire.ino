@@ -137,7 +137,7 @@ void loop() {
     // Each fire gains heat if their collective is above the minimum heat
     if(heat_sustained > 0)
     {
-      fire.second += (heat_sustained / 2);
+      fire.second += (heat_sustained / 1.5);
     }
 
     // Make sure that the fire amount is not out of the Leds' range
@@ -147,6 +147,10 @@ void loop() {
     if(button_pressed)
     {
       fire.second += manual_start_amount;
+      for(auto i = 0; i < flickers.size(); i++)
+      {
+        flickers[i].chance = starting_flicker_chances[i];
+      }
     }
     else
     {
