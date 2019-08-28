@@ -38,7 +38,7 @@ struct Flicker
   }
 };
 
-Light light(0);
+uno_acm::Light light(0);
 Button b(8);
 
 array<int, 50> light_values;
