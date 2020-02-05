@@ -1,9 +1,9 @@
 #ifndef UNO_ACM_ITERATOR
 #define UNO_ACM_ITERATOR
 
-#include <cstddef.h>
+#include <cstddef.hpp>
 
-namespace uno_acm
+namespace std
 {
 	struct input_iterator_tag {};
 	struct output_iterator_tag {};

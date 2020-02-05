@@ -1,16 +1,16 @@
-#include <Led.h>
-#include <Potentiometer.h>
+#include <led.hpp>
+#include <potentiometer.hpp>
 
 #define FASTEST_MS 250
 #define SLOWEST_MS 1000
 
 using namespace uno_acm;
 
-Pot p(0);
-Led led(11, 10, 9);
+pot p(0);
+led main_led(11, 10, 9);
 
-int getDelayTime(const Pot& pot) {
-  return map(pot.getValue(), Pot::minimum_value, Pot::maximum_value, FASTEST_MS, SLOWEST_MS);
+int getDelayTime(const pot& pot) {
+  return map(pot.getValue(), pot::minimum_value, pot::maximum_value, FASTEST_MS, SLOWEST_MS);
 }
 
 void setup() {
@@ -31,13 +31,13 @@ void loop() {
 
   for(int i = 0; i < 256; i++)
   {
-    led.setColor(red*i, green*i, blue*i);
+    main_led.setColor(red*i, green*i, blue*i);
     delayMicroseconds(pow(getDelayTime(p), 2) / 256);
   }
 
   for(int i = 255; i >= 0; i--)
   {
-    led.setColor(red*i, green*i, blue*i);
+    main_led.setColor(red*i, green*i, blue*i);
     delayMicroseconds(pow(getDelayTime(p), 2) / 256);
   }
 

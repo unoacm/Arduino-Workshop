@@ -1,5 +1,5 @@
-#include <Diode.h>
-#include <array.h>
+#include <diode.hpp>
+#include <array.hpp>
 
 using namespace uno_acm;
 
@@ -9,7 +9,7 @@ void turnAllOff();
 void turnAllOn();
 void displayNum(char);
 
-array<Diode, 8> diodes;
+std::array<diode, 8> diodes;
 
 void setup() {
   Serial.begin(9600);
@@ -47,14 +47,14 @@ void loop() {
 }
 
 void turnAllOff() {
-  for(auto& diode : diodes) {
-    diode.turnoff();
+  for(auto& d : diodes) {
+    d.turnoff();
   }
 }
 
 void turnAllOn() {
-  for(auto& diode : diodes) {
-    diode.turnon();
+  for(auto& d : diodes) {
+    d.turnon();
   }
 }
 

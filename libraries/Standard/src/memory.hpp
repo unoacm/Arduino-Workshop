@@ -1,12 +1,12 @@
 #ifndef UNO_ACM_MEMORY
 #define UNO_ACM_MEMORY
 
-#include <type_traits.h>
-#include <cstddef.h>
-#include <climits.h>
-#include <utility.h>
+#include <type_traits.hpp>
+#include <cstddef.hpp>
+#include <climits.hpp>
+#include <utility.hpp>
 
-namespace uno_acm
+namespace std
 {
 	template<class Alloc>
 	struct allocator_traits

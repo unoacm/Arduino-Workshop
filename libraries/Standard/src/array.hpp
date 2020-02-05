@@ -1,11 +1,11 @@
 #ifndef UNO_ACM_ARRAY
 #define UNO_ACM_ARRAY
 
-#include <iterator.h>
-#include <cstddef.h>
-#include <algorithm.h>
+#include <iterator.hpp>
+#include <cstddef.hpp>
+#include <algorithm.hpp>
 
-namespace uno_acm
+namespace std
 {
 	template<class T, unsigned int N>
 	class array
@@ -18,8 +18,8 @@ namespace uno_acm
 			using const_pointer = const pointer;
 			using iterator = T*;
 			using const_iterator = const iterator;
-			using reverse_iterator = uno_acm::reverse_iterator<iterator>;
-			using const_reverse_iterator = uno_acm::reverse_iterator<const_iterator>;
+			using reverse_iterator = std::reverse_iterator<iterator>;
+			using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 			using size_type = size_t;
 			using difference_type = ptrdiff_t;
 
@@ -45,22 +45,22 @@ namespace uno_acm
 
 			reverse_iterator rbegin()
 			{
-				return uno_acm::reverse_iterator<iterator>(begin());
+				return std::reverse_iterator<iterator>(begin());
 			}
 
 			const_reverse_iterator rbegin() const
 			{
-				return uno_acm::reverse_iterator<const_iterator>(begin());
+				return std::reverse_iterator<const_iterator>(begin());
 			}
 
 			reverse_iterator rend()
 			{
-				return uno_acm::reverse_iterator<iterator>(end());
+				return std::reverse_iterator<iterator>(end());
 			}
 
 			const_reverse_iterator rend() const
 			{
-				return uno_acm::reverse_iterator<const_iterator>(end());
+				return std::reverse_iterator<const_iterator>(end());
 			}
 
 			const_iterator cbegin() const
@@ -75,12 +75,12 @@ namespace uno_acm
 
 			const_reverse_iterator crbegin()
 			{
-				return uno_acm::reverse_iterator<const_iterator>(begin());
+				return std::reverse_iterator<const_iterator>(begin());
 			}
 
 			const_reverse_iterator crend()
 			{
-				return uno_acm::reverse_iterator<const_iterator>(end());
+				return std::reverse_iterator<const_iterator>(end());
 			}
 
 			constexpr size_type size()

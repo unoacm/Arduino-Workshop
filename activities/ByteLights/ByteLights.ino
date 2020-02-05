@@ -1,13 +1,13 @@
-#include <Diode.h>
-#include <array.h>
+#include <diode.hpp>
+#include <array.hpp>
 
 using namespace uno_acm;
-array<Diode, 8> diodes;
+std::array<diode, 8> diodes;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  for(int i = 0, j = 2; i < diodes.size(); j++, i++)
+  for(std::size_t i = 0, j = 2; i < diodes.size(); j++, i++)
   {
     diodes[i].setPin(j);
   }
@@ -22,7 +22,7 @@ void loop() {
     {
       Serial.print("Got: ");
       Serial.println(data);
-      for(int i = 0; i < diodes.size(); i++)
+      for(std::size_t i = 0; i < diodes.size(); i++)
       {
         if(bitRead(data, i))
         {

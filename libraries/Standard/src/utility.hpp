@@ -1,10 +1,10 @@
 #ifndef UNO_ACM_UTILITY
 #define UNO_ACM_UTILITY
 
-#include <tuple.h>
-#include <type_traits.h>
+#include <tuple.hpp>
+#include <type_traits.hpp>
 
-namespace uno_acm
+namespace std
 {
 	template<class T>
 	struct remove_reference;
@@ -62,12 +62,7 @@ namespace uno_acm
 		{
 		}
 
-		pair& operator=(const pair& pr)
-		{
-			this->first = pr.first;
-			this->second = pr.second;
-			return *this;
-		}
+		pair& operator=(const pair& pr) = default;
 
 		template<class U, class V>
 		pair& operator=(const pair<U, V>& pr)
@@ -77,12 +72,7 @@ namespace uno_acm
 			return *this;
 		}
 
-		pair& operator=(pair&& pr)
-		{
-			this->first = move(pr.first);
-			this->second = move(pr.second);
-			return *this;
-		}
+		pair& operator=(pair&& pr) = default;
 
 		template<class U, class V>
 		pair& operator=(pair<U,V>&& pr)

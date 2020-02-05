@@ -1,12 +1,12 @@
-#include "Light.h"
-#include "Led.h"
-#include "Potentiometer.h"
-#include "Button.h"
-#include <array.h>
-#include <numeric.h>
-#include <utility.h>
-#include <vector.h>
-#include <algorithm.h>
+#include <light.hpp>
+#include <led.hpp>
+#include <potentiometer.hpp>
+#include <button.hpp>
+#include <array.hpp>
+#include <numeric.hpp>
+#include <utility.hpp>
+#include <vector.hpp>
+#include <algorithm.hpp>
 
 using namespace uno_acm;
 
@@ -38,17 +38,17 @@ struct Flicker
   }
 };
 
-uno_acm::Light light(0);
-Button b(8);
+light li(0);
+button b(8);
 
-array<int, 50> light_values;
+std::array<int, 50> light_values;
 int spot = 0;
 double baseline = 0;
 long start = millis();
 bool button_last_value = false;
-vector<Flicker> flickers;
-vector<double> starting_flicker_chances;
-vector<pair<Led, double>> fires;
+std::vector<Flicker> flickers;
+std::vector<double> starting_flicker_chances;
+std::vector<std::pair<led, double>> fires;
 
 constexpr double minimum_heat_to_sustain = 1.0;
 constexpr double manual_start_amount = 55;
@@ -76,9 +76,9 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
 
-  fires.push_back(make_pair(Led(11, 13, 13), 0));
-  fires.push_back(make_pair(Led(10, 13, 13), 0));
-  fires.push_back(make_pair(Led(9, 13, 13), 0));
+  fires.push_back(std::make_pair(led(11, 13, 13), 0));
+  fires.push_back(std::make_pair(led(10, 13, 13), 0));
+  fires.push_back(std::make_pair(led(9, 13, 13), 0));
 
   Serial.println("Starting...");
 
@@ -90,16 +90,16 @@ void setup() {
   for(int i = 0; i < 200; i++)
   {
     delay(1);
-    light_values[spot] = light.getValue();
+    light_values[spot] = li.getValue();
     spot = (spot + 1) % light_values.size();
   }
 
-  baseline = accumulate(light_values.begin(), light_values.end(), 0) / static_cast<double>(light_values.size());
+  baseline = std::accumulate(light_values.begin(), light_values.end(), 0) / static_cast<double>(light_values.size());
   Serial.print("Current environment has an ambient light level of ");
   Serial.println(baseline);
 
   spot = 0;
-  fill(light_values.begin(), light_values.end(), 0);
+  std::fill(light_values.begin(), light_values.end(), 0);
 
   flickers.push_back(Flicker(.03, 60, 100));
   flickers.push_back(Flicker(.06, 40, 70));
@@ -115,8 +115,8 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   delay(10);
-  light_values[spot] = light.getValue();
-  const double average = accumulate(light_values.begin(), light_values.end(), 0) / static_cast<double>(light_values.size());
+  light_values[spot] = li.getValue();
+  const double average = std::accumulate(light_values.begin(), light_values.end(), 0) / static_cast<double>(light_values.size());
   bool button_on = b.isOn();
   bool button_pressed = false;
   if (!button_last_value && button_on)
@@ -141,7 +141,7 @@ void loop() {
     }
 
     // Make sure that the fire amount is not out of the Leds' range
-    fire.second = clamp(static_cast<int>(fire.second), Led::minimum_value, Led::maximum_value);
+    fire.second = std::clamp(static_cast<int>(fire.second), led::minimum_value, led::maximum_value);
 
     // If we are trying to manually start the fire
     if(button_pressed)
@@ -159,7 +159,7 @@ void loop() {
     }
 
     // Make sure that the fire amount is not out of the Leds' range
-    fire.second = clamp(static_cast<int>(fire.second), Led::minimum_value, Led::maximum_value);
+    fire.second = std::clamp(static_cast<int>(fire.second), led::minimum_value, led::maximum_value);
 
     // Set each Led to its corresponding heat
     fire.first.setRed(static_cast<int>(fire.second));

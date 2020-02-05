@@ -1,10 +1,10 @@
 #ifndef UNO_ACM_FUNCTIONAL
 #define UNO_ACM_FUNCTIONAL
 
-#include <cstddef.h>
-#include <utility.h>
+#include <cstddef.hpp>
+#include <utility.hpp>
 
-namespace uno_acm
+namespace std
 {
 	template<class T>
 	struct plus

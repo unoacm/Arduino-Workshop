@@ -1,9 +1,9 @@
 #ifndef UNO_ACM_NUMERIC
 #define UNO_ACM_NUMERIC
 
-#include <iterator.h>
+#include <iterator.hpp>
 
-namespace uno_acm
+namespace std
 {
 	template<class InputIterator, class T>
 	T accumulate(InputIterator first, InputIterator last, T init)
@@ -98,7 +98,7 @@ namespace uno_acm
 	{
 		if(first != last)
 		{
-			typename iterator_traits<InputIterator>::value_type val = *first;
+			auto val = *first;
 			*result = val;
 			while(++first != last)
 			{

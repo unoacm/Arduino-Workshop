@@ -3,7 +3,7 @@
 
 #include <limits.h>
 
-namespace uno_acm
+namespace std
 {
 	template<class T>
 	class numeric_limits

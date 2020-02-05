@@ -1,7 +1,7 @@
 #ifndef UNO_ACM_CSTDDEF
 #define UNO_ACM_CSTDDEF
 
-namespace uno_acm
+namespace std
 {
 	using ptrdiff_t = long;
 	using size_t = unsigned int;

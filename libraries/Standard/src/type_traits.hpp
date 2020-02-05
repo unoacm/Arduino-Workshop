@@ -1,9 +1,9 @@
 #ifndef UNO_ACM_TYPE_TRAITS
 #define UNO_ACM_TYPE_TRAITS
 
-#include <cstddef.h>
+#include <cstddef.hpp>
 
-namespace uno_acm
+namespace std
 {
 	template<class T>
 	struct remove_reference

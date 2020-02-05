@@ -1,11 +1,11 @@
-#include "Light.h"
-#include "Led.h"
-#include "utility.h"
+#include <light.hpp>
+#include <led.hpp>
+#include <utility.hpp>
 
 using namespace uno_acm;
 
-Light light(0);
-Led led(11, 10, 9);
+light li(0);
+led main_led(11, 10, 9);
 
 constexpr double green_mark = .01;
 constexpr double blue_mark  = .20;
@@ -21,20 +21,20 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  int light_value = light.getValue();
+  auto light_value = li.getValue();
   Serial.print("Light Value: ");
   Serial.println(light_value);
-  double percentage = static_cast<double>(light_value) / light_max_value;
+  auto percentage = static_cast<double>(light_value) / light_max_value;
   Serial.print("Percentage: ");
   Serial.print(percentage * 100);
   Serial.println("%");
 
-  int red_value = clamp(static_cast<int>((percentage - red_mark) * Led::maximum_value), 0, Led::maximum_value);
-  int blue_value = clamp(static_cast<int>((percentage - blue_mark) * Led::maximum_value), 0, Led::maximum_value);
-  int green_value = clamp(static_cast<int>((percentage - green_mark) * Led::maximum_value), 0, Led::maximum_value);
+  auto red_value = std::clamp(static_cast<int>((percentage - red_mark) * led::maximum_value), 0, led::maximum_value);
+  auto blue_value = std::clamp(static_cast<int>((percentage - blue_mark) * led::maximum_value), 0, led::maximum_value);
+  auto green_value = std::clamp(static_cast<int>((percentage - green_mark) * led::maximum_value), 0, led::maximum_value);
 
-  green_value = clamp(green_value - blue_value, 0, Led::maximum_value);
-  blue_value = clamp(blue_value - red_value, 0, Led::maximum_value);
+  green_value = std::clamp(green_value - blue_value, 0, led::maximum_value);
+  blue_value = std::clamp(blue_value - red_value, 0, led::maximum_value);
 
-  led.setColor(red_value, green_value, blue_value);
+  main_led.setColor(red_value, green_value, blue_value);
 }

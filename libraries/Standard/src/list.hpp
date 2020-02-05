@@ -1,12 +1,12 @@
 #ifndef UNO_ACM_LIST
 #define UNO_ACM_LIST
 
-#include <iterator.h>
-#include <cstddef.h>
-#include <climits.h>
-#include <utility.h>
+#include <iterator.hpp>
+#include <cstddef.hpp>
+#include <climits.hpp>
+#include <utility.hpp>
 
-namespace uno_acm
+namespace std
 {
 
 	template<class T>
@@ -113,6 +113,7 @@ namespace uno_acm
 			{
 				if(this != &x)
 				{
+					clear();
 					for(auto it = begin(x); it != end(x); it++)
 					{
 						push_back(it->data);
@@ -273,7 +274,7 @@ namespace uno_acm
 
 			void push_back(const value_type& val)
 			{
-				list_node<T>* node = new list_node<T>(val);
+				auto node = new list_node<T>(val);
 				node->previous = _end;
 				if(_beginning == nullptr)
 				{
@@ -289,7 +290,7 @@ namespace uno_acm
 
 			void push_back(value_type&& val)
 			{
-				list_node<T>* node = new list_node<T>(val);
+				auto node = new list_node<T>(val);
 				node->previous = _end;
 				if(_beginning == nullptr)
 				{
@@ -326,7 +327,7 @@ namespace uno_acm
 
 			iterator insert(const_iterator position, const_reference val)
 			{
-				list_node<T>* node = new list_node<T>(val);
+				auto node = new list_node<T>(val);
 				node->next = &(*position);
 				node->previous = position->previous;
 				position->previous = node;
@@ -355,7 +356,7 @@ namespace uno_acm
 
 			iterator insert(const_iterator position, value_type&& val)
 			{
-				list_node<T>* node = new list_node<T>(val);
+				auto node = new list_node<T>(val);
 				node->next = &(*position);
 				node->previous = position->previous;
 				position->previous = node;
@@ -369,7 +370,7 @@ namespace uno_acm
 				position->previous->next = position->next;
 				position->next->previous = position->previous;
 				
-				iterator result = list_iter<T>(position->next);
+				auto result = list_iter<T>(position->next);
 				delete &(*position);
 				elements--;
 				return result;

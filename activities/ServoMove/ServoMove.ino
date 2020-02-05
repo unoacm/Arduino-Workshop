@@ -1,14 +1,14 @@
-#include <acmservo.h>
-#include <Potentiometer.h>
+#include <servo.hpp>
+#include <potentiometer.hpp>
 
 using namespace uno_acm;
 
-ACMServo myservo;
-Pot p(0);
+servo myservo(8);
+pot p(0);
 
 void setup() {
   // put your setup code here, to run once:
-  myservo.setPin(8);
+  myservo.attach();
 }
 
 void loop() {

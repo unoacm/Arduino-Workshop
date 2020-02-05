@@ -1,11 +1,11 @@
 #ifndef UNO_ACM_ALGORITHMS
 #define UNO_ACM_ALGORITHMS
 
-#include <iterator.h>
-#include <utility.h>
-#include <functional.h>
+#include <iterator.hpp>
+#include <utility.hpp>
+#include <functional.hpp>
 
-namespace uno_acm
+namespace std
 {
 	template<class T>
 	constexpr const T& clamp(const T& v, const T& lo, const T& hi)
